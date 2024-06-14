@@ -18,12 +18,15 @@ const initApp = (): void => {
     const newEntryText: string = input.value.trim()
     if (!newEntryText.length) return
 
-    // calculate item ID
+    // Set the value of the input field to an empty string
+    input.value = ''
+
+    // Calculate item ID
     const itemId: number = fullList.list.length
       ? parseInt(fullList.list[fullList.list.length - 1].id) + 1
       : 1
 
-    // create new item
+    // Create new item
     const newItem = new ListItem(itemId.toString(), newEntryText)
     // Add new item to full list
     fullList.addItem(newItem)
@@ -41,8 +44,9 @@ const initApp = (): void => {
 
   // load initial data
   fullList.load()
-  // initial render of template
+  // Initial render of template
   template.render(fullList)
 }
 
 document.addEventListener("DOMContentLoaded", initApp) 
+
